@@ -32,8 +32,8 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
+alias zshrc="nvim ~/.zshrc"
+alias vimrc="nvim ~/.config/nvim/init.vim"
 alias npmre="rm -rf node_modules/ && npm i"
 alias npmgls="npm ls -g --depth 0"
 alias weather="curl wttr.in/boston"
