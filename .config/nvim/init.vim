@@ -11,6 +11,7 @@ Plugin 'gcmt/breeze.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 
 " js beautify
