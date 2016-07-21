@@ -24,7 +24,7 @@ export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/s
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
-export EDITOR=nvim
+export EDITOR="vim"
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -41,8 +41,8 @@ export LC_ALL="en_US.UTF-8"
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-alias zshrc="nvim ~/.zshrc"
-alias vimrc="nvim ~/.config/nvim/init.vim"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 alias npmre="rm -rf node_modules/ && npm i"
 alias npmgls="npm ls -g --depth 0"
 alias weather="curl wttr.in/boston"
