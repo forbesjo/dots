@@ -21,7 +21,7 @@ export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/s
 # export MANPATH="/usr/local/man:$MANPATH"
 # export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/"
 # export JAVA_HOME=/usr/libexec/java_home
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export EDITOR="vim"
