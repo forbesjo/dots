@@ -39,9 +39,6 @@ export LC_ALL="en_US.UTF-8"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias npmre="rm -rf node_modules/ && npm i"
 alias npmgls="npm ls -g --depth 0"
