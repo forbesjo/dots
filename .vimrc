@@ -13,6 +13,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/vim-easy-align'
 
 " js beautify
 Plugin 'einars/js-beautify'
@@ -22,6 +23,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'wookiehangover/jshint.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'digitaltoad/vim-pug'
 
 " toggle comments
 Plugin 'tomtom/tcomment_vim'
