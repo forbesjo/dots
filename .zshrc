@@ -43,6 +43,7 @@ alias vimrc="vim ~/.vimrc"
 alias npmre="rm -rf node_modules/ && npm i"
 alias npmgls="npm ls -g --depth 0"
 alias weather="curl wttr.in/boston"
+alias gbranch="git branch --sort=-committerdate"
 
 #Is our ssh-agent running already?
 if [ -z "$SSH_AUTH_SOCK" ] ; then
