@@ -97,7 +97,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
+set guifont=Source\ Code\ Pro\ for\ Powerline
 "
 " Basic shortcuts definitions
 "  most in visual mode / selection (v or ⇧ v)
