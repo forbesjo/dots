@@ -4,35 +4,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
-
-Plugin 'gcmt/breeze.vim'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'junegunn/vim-easy-align'
-
-" js beautify
-Plugin 'einars/js-beautify'
-Plugin 'maksimr/vim-jsbeautify'
-
 Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'wookiehangover/jshint.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'digitaltoad/vim-pug'
-
-" toggle comments
 Plugin 'tomtom/tcomment_vim'
-
 
 call vundle#end()
 filetype plugin indent on
 
-colorscheme Monokai
+colorscheme murphy
 
 """"""""
 if has('autocmd')
@@ -85,7 +66,7 @@ endif
 "
 
 " CtrlP
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,node_modules/*
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
   \ --ignore .git
   \ --ignore .svn
@@ -94,11 +75,6 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
   \ --ignore "**/*.pyc"
   \ -g ""'
 
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-set guifont=Source\ Code\ Pro\ for\ Powerline
-"
 " Basic shortcuts definitions
 "  most in visual mode / selection (v or ⇧ v)
 "
@@ -118,8 +94,6 @@ noremap <C-/> gc
 let g:tcomment#replacements_xml={}
 
 " buffers as tabs
-let g:airline_theme='badwolf'
-let g:airline#extensions#tabline#enabled = 1
 nnoremap <C-j>  :bp<CR>
 inoremap <C-j>  <Esc>:bp<CR>i
 nnoremap <C-k>  :bn<CR>
@@ -131,22 +105,9 @@ inoremap <C-x>  <Esc>:bd<CR>i
 map \ :
 
 let mapleader = ','
-nnoremap <Leader>p :set paste<CR>
-nnoremap <Leader>o :set nopaste<CR>
-noremap  <Leader>g :GitGutterToggle<CR>
+" paste without yanking
+vnoremap <leader>p "_dP
 noremap <C-n> :NERDTreeToggle<CR>
-
-map <c-f> :call JsBeautify()<cr>
-" or
-autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
-" for json
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-" for jsx
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " this machine config
 if filereadable(expand("~/.vimrc.local"))
@@ -156,7 +117,6 @@ endif
 let g:gitgutter_realtime = 1
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 set clipboard=unnamed

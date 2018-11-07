@@ -11,18 +11,15 @@ ZSH_THEME="minimal"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases osx npm terminalapp brew web-search)
+export NVM_AUTO_USE=true
+export NVM_LAZY_LOAD=true
+plugins=(git common-aliases vscode)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-# export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/"
-# export JAVA_HOME=/usr/libexec/java_home
-# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export EDITOR="vim"
 export LANG="en_US.UTF-8"
@@ -40,28 +37,38 @@ export LC_ALL="en_US.UTF-8"
 # For a full list of active aliases, run `alias`.
 #
 alias vimrc="vim ~/.vimrc"
-alias npmre="rm -rf node_modules/ && npm i"
+alias npmre="rm -rf node_modules && npm i"
+alias npmb="npm run build"
 alias npmgls="npm ls -g --depth 0"
-alias weather="curl wttr.in/boston"
+alias npmls="npm ls --depth 0"
+alias weather="curl wttr.in"
 alias gbranch="git branch --sort=-committerdate"
 
-#Is our ssh-agent running already?
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  #No, so lets start it.
-  eval `ssh-agent -s`
-  #Add our keys
-  ssh-add
-fi
+ssh-add -l >/dev/null || ssh-add -A
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 autoload -U add-zsh-hook
 load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
   fi
 }
 add-zsh-hook chpwd load-nvmrc
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+load-nvmrc
