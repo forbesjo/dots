@@ -43,7 +43,7 @@ alias npmgls="npm ls -g --depth 0"
 alias npmls="npm ls --depth 0"
 alias weather="curl wttr.in"
 alias gbranch="git branch --sort=-committerdate"
-alias brewup="brew update && brew upgrade"
+alias brewup="brew update && brew upgrade && brew cask upgrade"
 
 ssh-add -l >/dev/null || ssh-add -A
 
